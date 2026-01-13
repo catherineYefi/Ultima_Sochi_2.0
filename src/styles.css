@@ -1,0 +1,2404 @@
+/* ==================== RESET & BASE ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "SF Pro Text", "Segoe UI", "Inter", sans-serif;
+  color: #ffffff;
+  background: #000000;
+  overflow-x: hidden;
+}
+
+/* ==================== DECK CONTAINER ==================== */
+.ultima-deck {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+/* ==================== SLIDE BASE ==================== */
+.ultima-slide {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 60px 80px;
+  transition: opacity 0.6s ease-in-out;
+  scroll-snap-align: start;
+}
+
+/* Компактный режим для слайдов с большим количеством контента */
+.ultima-slide--compact {
+  padding: 40px 80px;
+}
+
+/* Дополнительные оптимизации для компактных слайдов */
+.ultima-slide--compact .stats-grid {
+  margin: 32px 0;
+  gap: 20px;
+}
+
+.ultima-slide--compact .stats-grid-large {
+  margin: 32px 0;
+  gap: 16px;
+}
+
+.ultima-slide--compact .stat-card {
+  padding: 32px 24px;
+}
+
+.ultima-slide--compact .stat-card-big {
+  padding: 28px 20px;
+}
+
+.ultima-slide--compact .text-hero {
+  margin: 20px 0;
+}
+
+.ultima-slide--compact .heading-large {
+  margin-bottom: 24px;
+}
+
+.ultima-slide--compact .bento-grid {
+  margin: 32px 0;
+  grid-template-rows: repeat(2, 140px);
+}
+
+.ultima-slide--compact .timeline-vertical {
+  margin: 32px 0;
+}
+
+.ultima-slide--compact .timeline-item {
+  margin-bottom: 28px;
+}
+
+.ultima-slide--compact .timeline-content {
+  padding: 20px 28px;
+}
+
+.ultima-slide--compact .timeline-title {
+  font-size: clamp(22px, 3vw, 32px);
+}
+
+.ultima-slide--compact .access-cards {
+  margin: 32px auto;
+  gap: 16px;
+}
+
+.ultima-slide--compact .dual-cards {
+  margin: 32px 0;
+}
+
+.ultima-slide--compact .split-content {
+  margin: 32px 0;
+  gap: 24px;
+}
+
+.ultima-slide--compact .content-block {
+  padding: 28px;
+}
+
+.ultima-slide--compact .block-title {
+  margin-bottom: 20px;
+}
+
+.ultima-slide--compact .text-medium {
+  margin-bottom: 16px;
+}
+
+.ultima-slide--compact .highlight-box {
+  padding: 32px 28px;
+  margin: 24px 0;
+}
+
+.ultima-slide--compact .vip-list {
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.ultima-slide--compact .vip-item {
+  padding: 12px 0;
+}
+
+.ultima-slide--compact .system-architecture {
+  gap: 24px;
+  margin: 24px 0;
+}
+
+.ultima-slide--compact .arch-category {
+  gap: 12px;
+}
+
+.ultima-slide--compact .arch-card {
+  padding: 20px 16px;
+  min-height: 100px;
+}
+
+.ultima-slide--compact .layers-container {
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.ultima-slide--compact .layer-item {
+  padding: 16px 24px;
+}
+
+.ultima-slide--compact .council-formula {
+  padding: 32px 40px;
+  margin: 24px 0;
+  gap: 24px;
+}
+
+.ultima-slide--compact .council-layers {
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.ultima-slide--compact .stats-grid-three {
+  margin: 32px 0;
+}
+
+.ultima-slide--compact .layers-cards {
+  margin: 24px 0;
+  gap: 16px;
+}
+
+.ultima-slide--compact .layer-card {
+  padding: 24px 28px;
+}
+
+.ultima-slide--compact .journey-flow {
+  margin: 32px 0;
+  gap: 12px;
+}
+
+.ultima-slide--compact .journey-card {
+  padding: 20px 16px;
+  min-width: 160px;
+  max-width: 180px;
+}
+
+.ultima-slide--compact .journey-arrow {
+  margin-top: 50px;
+}
+
+/* ==================== BACKGROUNDS ==================== */
+.ultima-slide.bg-space {
+  background-image: url("/bg-dark-planet.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.ultima-slide.bg-space::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.75) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ultima-slide.bg-gray {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+.ultima-slide.bg-half-planet {
+  background-image: url("/bg-half-planet.png");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.ultima-slide.bg-half-planet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.85) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ultima-slide.bg-astronaut {
+  background-image: url("/bg-light-astronaut.png");
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.ultima-slide.bg-astronaut::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.9) 50%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ultima-slide.bg-rocket {
+  background-image: url("/bg-rocket.png");
+  background-size: cover;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.ultima-slide.bg-rocket::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.85) 50%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ultima-slide.bg-sprint {
+  background-image: url("/bg-sprint-text.png");
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.ultima-slide.bg-sprint::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.9) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==================== CONTENT CONTAINER ==================== */
+.ultima-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.ultima-slide.visible .ultima-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== ALIGNMENT ==================== */
+.ultima-slide.align-left .ultima-content {
+  text-align: left;
+}
+
+.ultima-slide.align-center .ultima-content {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* ==================== GRADIENT TEXT ==================== */
+.gradient-text {
+  background: linear-gradient(135deg, #00f5ff 0%, #ff00e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.accent-text {
+  color: rgba(0, 245, 255, 0.9);
+  font-weight: 500;
+}
+
+.muted-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+.ultima-title {
+  font-size: clamp(64px, 10vw, 120px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.heading-hero {
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 32px;
+}
+
+.heading-massive {
+  font-size: clamp(64px, 10vw, 120px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 32px;
+}
+
+.heading-large {
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 32px;
+}
+
+.ultima-subtitle {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  margin-top: 24px;
+}
+
+/* ==================== TITLE FLOW ICONS (Slide 1) ==================== */
+.title-flow-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.flow-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.flow-item:hover {
+  transform: translateY(-2px);
+}
+
+.flow-item svg {
+  color: #00f5ff;
+  filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.5));
+  transition: all 0.3s ease;
+}
+
+.flow-item:hover svg {
+  filter: drop-shadow(0 0 12px rgba(0, 245, 255, 0.8));
+  transform: scale(1.1);
+}
+
+.flow-arrow {
+  color: rgba(0, 245, 255, 0.7);
+  flex-shrink: 0;
+}
+
+.label-small {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+.label-pill {
+  display: inline-block;
+  padding: 10px 28px;
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00f5ff;
+  margin-bottom: 32px;
+}
+
+.text-block {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.text-large {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.text-hero {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 32px 0;
+}
+
+.text-medium {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.accent-line {
+  padding-left: 24px;
+  border-left: 3px solid #00f5ff;
+  margin-top: 32px;
+}
+
+/* ==================== GLASSMORPHISM CARDS ==================== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 32px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 245, 255, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 245, 255, 0.2);
+}
+
+/* ==================== PILL GRID ==================== */
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 28px 0;
+}
+
+.pill-item {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.pill-item.large {
+  font-size: clamp(20px, 3vw, 28px);
+  padding: 14px 32px;
+  font-weight: 600;
+}
+
+.pill-item:hover {
+  background: rgba(0, 245, 255, 0.1);
+  border-color: rgba(0, 245, 255, 0.5);
+  transform: scale(1.05);
+}
+
+/* ==================== STATS GRID ==================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 48px 0;
+}
+
+.stat-card {
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-12px);
+}
+
+.stat-number {
+  font-size: clamp(80px, 15vw, 160px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.glowing-number {
+  background: linear-gradient(135deg, #00f5ff 0%, #ff00e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(0, 245, 255, 0.4), 0 0 60px rgba(0, 245, 255, 0.25);
+  filter: drop-shadow(0 0 15px rgba(0, 245, 255, 0.4));
+}
+
+.stat-label {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+.stats-grid-large {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 48px 0;
+}
+
+.stats-grid-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 48px 0;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stats-grid-four {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 48px 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-card-big {
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.stat-sublabel-small {
+  font-size: clamp(11px, 1.3vw, 14px);
+  font-weight: 300;
+  color: rgba(0, 245, 255, 0.7);
+  margin-top: 8px;
+  line-height: 1.3;
+}
+
+.stat-number-big {
+  font-size: clamp(72px, 12vw, 120px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+/* ==================== DUAL CARDS ==================== */
+.dual-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin: 48px 0;
+}
+
+.feature-card {
+  padding: 32px 28px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-12px) scale(1.02);
+}
+
+.card-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.5));
+}
+
+.card-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #00f5ff 0%, #ff00e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-duration {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 300;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.feature-list {
+  list-style: none;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 300;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.feature-list li {
+  margin-bottom: 12px;
+  padding-left: 32px;
+  position: relative;
+}
+
+.feature-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #00f5ff;
+  font-weight: 600;
+}
+
+/* ==================== SPLIT CONTENT ==================== */
+.split-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ← ОДИНАКОВАЯ ШИРИНА */
+  gap: 32px;
+  margin: 48px 0;
+}
+
+.content-block {
+  padding: 36px;
+  text-align: left;
+}
+
+.block-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #00f5ff;
+}
+
+.elegant-list {
+  list-style: none;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.elegant-list li {
+  margin-bottom: 16px;
+  padding-left: 32px;
+  position: relative;
+}
+
+.elegant-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00f5ff;
+  font-size: 1.5em;
+}
+
+/* ==================== HIGHLIGHT BOX ==================== */
+.highlight-box {
+  padding: 40px 36px;
+  margin: 32px 0;
+  border-left: 4px solid #00f5ff;
+}
+
+.vip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.vip-item {
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 400;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.vip-item:hover {
+  color: #00f5ff;
+  padding-left: 16px;
+  border-bottom-color: rgba(0, 245, 255, 0.5);
+}
+
+/* ==================== BENTO GRID ==================== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 160px);
+  gap: 20px;
+  margin: 48px 0;
+}
+
+.bento-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  transition: all 0.4s ease;
+}
+
+.bento-item.large {
+  grid-column: span 2;
+}
+
+.bento-item:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.bento-icon {
+  margin-bottom: 16px;
+  color: #00f5ff;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.5));
+  transition: all 0.3s ease;
+}
+
+.bento-item:hover .bento-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 30px rgba(0, 245, 255, 0.8));
+}
+
+.bento-text {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 400;
+}
+
+/* ==================== TIMELINE VERTICAL ==================== */
+.timeline-vertical {
+  position: relative;
+  padding-left: 80px;
+  margin: 48px 0;
+  max-width: 800px;
+}
+
+.timeline-vertical::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(to bottom, #00f5ff 0%, #ff00e5 100%);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -68px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  background: #00f5ff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.8);
+  border: 3px solid #000;
+}
+
+.timeline-dot.glow {
+  width: 24px;
+  height: 24px;
+  left: -72px;
+  top: 4px;
+  background: linear-gradient(135deg, #00f5ff 0%, #ff00e5 100%);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 1);
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px 32px;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 245, 255, 0.3);
+  transform: translateX(8px);
+}
+
+.timeline-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 500;
+}
+
+/* ==================== ACCESS CARDS ==================== */
+.access-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 40px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.access-card {
+  padding: 32px 48px;
+  text-align: center;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.access-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.access-card.accent-border {
+  border: 2px solid #00f5ff;
+  background: rgba(0, 245, 255, 0.05);
+  box-shadow: 0 0 40px rgba(0, 245, 255, 0.3);
+}
+
+/* ==================== ДОПОЛНИТЕЛЬНЫЕ ЭЛЕМЕНТЫ ==================== */
+
+/* Мелкие лейблы для контекста */
+.context-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+
+/* Подзаголовок для timeline */
+.timeline-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 8px;
+}
+
+/* Стили для мини-подписей под именами */
+.vip-role {
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  margin-top: 4px;
+}
+
+/* Стили для цифр с подписями */
+.stat-sublabel {
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: rgba(0, 245, 255, 0.7);
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+.stat-note {
+  font-size: clamp(11px, 1.4vw, 14px);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  margin-top: 12px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Стили для иконок-кружков вместо эмодзи */
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 245, 255, 0.15) 0%,
+    rgba(255, 0, 229, 0.15) 100%
+  );
+  border: 2px solid rgba(0, 245, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: #00f5ff;
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .icon-circle {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 50px rgba(0, 245, 255, 0.6);
+}
+
+/* Градиентная рамка для highlight-box */
+.highlight-box.gradient-border {
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(
+      to bottom,
+      rgba(0, 245, 255, 0.8) 0%,
+      rgba(255, 0, 229, 0.6) 100%
+    )
+    1;
+}
+
+/* Размеры карточек доступа */
+.access-card.large-card {
+  padding: 44px 56px;
+  font-size: clamp(28px, 4vw, 40px);
+  transform: scale(1.05);
+}
+
+/* Выделенная плитка в bento */
+.bento-item.featured {
+  background: rgba(0, 245, 255, 0.08);
+  border: 2px solid rgba(0, 245, 255, 0.4);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
+}
+
+/* Сноска внизу слайда */
+.footnote {
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+  margin-top: 40px;
+  font-style: italic;
+}
+
+/* ==================== АРХИТЕКТУРА СИСТЕМЫ ==================== */
+.system-architecture {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 32px 0;
+}
+
+.arch-category {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.arch-category-title {
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 245, 255, 0.8);
+  margin-bottom: 8px;
+}
+
+.arch-grid-four {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.arch-grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.arch-card {
+  padding: 24px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 120px;
+  transition: all 0.3s ease;
+}
+
+.arch-card.small {
+  min-height: 100px;
+  padding: 20px 16px;
+}
+
+.arch-card.featured {
+  background: rgba(0, 245, 255, 0.08);
+  border-color: rgba(0, 245, 255, 0.4);
+}
+
+.arch-card:hover {
+  transform: translateY(-4px);
+}
+
+.arch-icon {
+  color: #00f5ff;
+  filter: drop-shadow(0 0 15px rgba(0, 245, 255, 0.5));
+}
+
+.arch-label {
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.arch-card-title {
+  font-size: clamp(17px, 2.3vw, 24px);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.arch-card-text {
+  font-size: clamp(13px, 1.8vw, 18px);
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==================== RADIAL ARCHITECTURE (Slide 10) ==================== */
+.system-architecture-radial {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 40px 20px;
+  min-height: 650px;
+}
+
+/* ЦЕНТР - УЧАСТНИК */
+.participant-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.center-card {
+  padding: 36px 32px;
+  border-radius: 20px;
+  text-align: center;
+  background: rgba(0, 245, 255, 0.12);
+  border: 2px solid rgba(0, 245, 255, 0.6);
+  box-shadow: 0 0 40px rgba(0, 245, 255, 0.3);
+  min-width: 220px;
+  transition: all 0.3s ease;
+}
+
+.center-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 60px rgba(0, 245, 255, 0.5);
+}
+
+.center-icon {
+  color: #00f5ff;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.6));
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.center-title {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #00f5ff;
+  text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+  margin-bottom: 8px;
+}
+
+.center-subtitle {
+  font-size: clamp(13px, 1.6vw, 16px);
+  font-weight: 300;
+  color: rgba(0, 245, 255, 0.8);
+}
+
+/* САТЕЛЛИТЫ */
+.satellites {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.satellite {
+  position: absolute;
+  padding: 28px 24px;
+  border-radius: 16px;
+  text-align: center;
+  min-width: 180px;
+  transition: all 0.3s ease;
+}
+
+.satellite:hover {
+  transform: translateY(-6px) scale(1.05);
+  border-color: rgba(0, 245, 255, 0.6);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+}
+
+.satellite-icon {
+  color: #00f5ff;
+  filter: drop-shadow(0 0 15px rgba(0, 245, 255, 0.5));
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.satellite-label {
+  font-size: clamp(18px, 2.3vw, 24px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Позиции сателлитов */
+/* Лидер и Группа - над центром */
+.satellite-top-left {
+  top: 10%;
+  left: 32%;
+}
+
+.satellite-top-right {
+  top: 10%;
+  right: 32%;
+}
+
+/* Стратсессии и Трекер - по бокам от центра */
+.satellite-middle-left {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+.satellite-middle-right {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+/* ПОДДЕРЖКА И ЭКСПЕРТЫ - СНИЗУ */
+.support-expert-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 420px;
+}
+
+.support-block,
+.expert-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.support-title,
+.expert-title {
+  font-size: clamp(16px, 1.8vw, 18px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 245, 255, 0.8);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.support-cards,
+.expert-cards {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.support-card {
+  padding: 20px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: clamp(15px, 1.9vw, 19px);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-height: 90px;
+}
+
+.support-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.support-card svg {
+  color: #00f5ff;
+  filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.4));
+}
+
+.expert-card {
+  padding: 20px 24px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  min-height: 90px;
+  flex: 1;
+}
+
+.expert-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.expert-card-title {
+  font-size: clamp(14px, 1.9vw, 18px);
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.expert-card-text {
+  font-size: clamp(11px, 1.5vw, 14px);
+  font-weight: 300;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==================== 5 СЛОЕВ ПРОГРАММЫ ==================== */
+.layers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 28px 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.layer-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 28px;
+  transition: all 0.3s ease;
+}
+
+.layer-item.featured {
+  background: rgba(0, 245, 255, 0.08);
+  border-color: rgba(0, 245, 255, 0.4);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
+}
+
+.layer-item:hover {
+  transform: translateX(8px);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.layer-number {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #00f5ff 0%, #ff00e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 50px;
+  text-align: center;
+}
+
+.layer-content {
+  flex: 1;
+  text-align: left;
+}
+
+.layer-title {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.layer-subtitle {
+  font-size: clamp(13px, 1.6vw, 16px);
+  font-weight: 300;
+  color: rgba(0, 245, 255, 0.7);
+}
+
+/* ==================== СОВЕТ ДИРЕКТОРОВ ==================== */
+.council-formula {
+  padding: 40px 48px;
+  margin: 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.formula-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.formula-number {
+  font-size: clamp(56px, 10vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.formula-label {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.formula-operator {
+  font-size: clamp(40px, 7vw, 64px);
+  font-weight: 300;
+  color: rgba(0, 245, 255, 0.6);
+}
+
+.council-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.council-layer-item {
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 400;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid rgba(0, 245, 255, 0.5);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.council-layer-item:hover {
+  background: rgba(0, 245, 255, 0.05);
+  padding-left: 32px;
+  border-left-color: #00f5ff;
+}
+
+/* ==================== RESPONSIVE - TABLET ==================== */
+@media (max-width: 1024px) {
+  .ultima-slide {
+    padding: 80px 60px;
+  }
+
+  .stats-grid,
+  .dual-cards,
+  .split-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .stats-grid-large {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .bento-item.large {
+    grid-column: span 1;
+  }
+
+  .stats-grid-three {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid-four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .arch-grid-four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .arch-grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .layers-cards {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .layer-card {
+    min-width: 160px;
+    max-width: 200px;
+  }
+
+  .journey-flow {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .journey-card {
+    min-width: 150px;
+    max-width: 170px;
+  }
+
+  .journey-arrow {
+    margin-top: 48px;
+  }
+
+  .title-flow-icons {
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .flow-item {
+    gap: 8px;
+  }
+
+  /* Радиальная архитектура на tablet */
+  .system-architecture-radial {
+    min-height: 600px;
+    padding-top: 50px;
+  }
+
+  .center-card {
+    min-width: 180px;
+    padding: 28px 24px;
+  }
+
+  .satellite {
+    min-width: 160px;
+    padding: 24px 20px;
+  }
+
+  .satellite-top-left {
+    top: 8%;
+    left: 28%;
+  }
+
+  .satellite-top-right {
+    top: 8%;
+    right: 28%;
+  }
+
+  .satellite-middle-left {
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+  }
+
+  .satellite-middle-right {
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
+  }
+
+  .support-expert-row {
+    margin-top: 400px;
+  }
+}
+
+/* ==================== RESPONSIVE - MOBILE ==================== */
+@media (max-width: 768px) {
+  .ultima-slide {
+    padding: 60px 32px;
+    background-attachment: scroll;
+  }
+
+  .ultima-slide .ultima-content {
+    text-align: left !important;
+  }
+
+  /* Сетки в 1 колонку */
+  .stats-grid,
+  .stats-grid-large,
+  .stats-grid-three,
+  .stats-grid-four,
+  .dual-cards,
+  .split-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .arch-grid-four,
+  .arch-grid-two {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .arch-card {
+    padding: 20px;
+    min-height: 100px;
+  }
+
+  .system-architecture {
+    gap: 24px;
+  }
+
+  .layers-container {
+    gap: 12px;
+  }
+
+  .layer-item {
+    padding: 16px 20px;
+  }
+
+  .council-formula {
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px 24px;
+  }
+
+  .formula-operator {
+    transform: rotate(90deg);
+  }
+
+  .council-layers {
+    gap: 10px;
+  }
+
+  .council-layer-item {
+    padding: 12px 20px;
+    font-size: clamp(14px, 3.5vw, 18px);
+  }
+
+  .layers-cards {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .layer-card {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 24px;
+  }
+
+  .journey-flow {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .journey-step {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .journey-card {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 24px 20px;
+  }
+
+  .journey-arrow {
+    transform: rotate(90deg);
+    margin-top: 0;
+    font-size: 32px;
+  }
+
+  .title-flow-icons {
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .flow-item {
+    gap: 10px;
+  }
+
+  .flow-item svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .flow-arrow {
+    transform: rotate(90deg);
+    font-size: 24px;
+  }
+
+  /* Пиллы */
+  .pill-grid {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pill-item {
+    text-align: center;
+    padding: 20px 32px;
+  }
+
+  /* Timeline */
+  .timeline-vertical {
+    padding-left: 50px;
+  }
+
+  .timeline-vertical::before {
+    left: 16px;
+  }
+
+  .timeline-dot {
+    left: -42px;
+  }
+
+  .timeline-dot.glow {
+    left: -46px;
+  }
+
+  /* Bento Grid */
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .bento-item {
+    padding: 32px;
+    min-height: 140px;
+  }
+
+  /* Карточки */
+  .glass-card {
+    padding: 32px 24px;
+  }
+
+  .feature-card {
+    padding: 40px 32px;
+  }
+
+  /* Access Cards */
+  .access-cards {
+    gap: 16px;
+  }
+
+  .access-card {
+    padding: 32px 40px;
+  }
+
+  .access-card.large-card {
+    padding: 40px 48px;
+  }
+
+  /* Статистика */
+  .stat-card {
+    padding: 48px 32px;
+  }
+
+  .stat-card-big {
+    padding: 40px 24px;
+  }
+
+  /* Иконки */
+  .icon-circle {
+    width: 64px;
+    height: 64px;
+  }
+
+  .bento-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Highlight Box */
+  .highlight-box {
+    padding: 40px 32px;
+  }
+
+  .vip-item {
+    padding: 16px 0;
+  }
+
+  /* Радиальная архитектура на mobile - переход в вертикальный список */
+  .system-architecture-radial {
+    position: static;
+    min-height: auto;
+    padding: 20px 0;
+  }
+
+  .participant-center {
+    position: static;
+    transform: none;
+    margin-bottom: 32px;
+  }
+
+  .center-card {
+    min-width: 100%;
+    padding: 24px 20px;
+  }
+
+  .satellites {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .satellite {
+    position: static;
+    min-width: 100%;
+    padding: 20px;
+  }
+
+  .support-expert-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 0;
+  }
+
+  .support-cards,
+  .expert-cards {
+    flex-direction: column;
+  }
+
+  .trackers-grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .trackers-text-block {
+    max-width: 100%;
+  }
+
+  .trackers-image {
+    max-width: 100%;
+  }
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ultima-slide.visible * {
+  animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.ultima-slide.visible *:nth-child(1) {
+  animation-delay: 0s;
+}
+.ultima-slide.visible *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.ultima-slide.visible *:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.ultima-slide.visible *:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ultima-content {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .gradient-text {
+    -webkit-text-fill-color: #00f5ff;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+}
+@media (prefers-contrast: high) {
+  .gradient-text {
+    -webkit-text-fill-color: #00f5ff;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ==================== RESPONSIVE - SMALL MOBILE ==================== */
+@media (max-width: 480px) {
+  .ultima-slide {
+    padding: 40px 20px;
+  }
+
+  /* Заголовки уменьшаем */
+  .ultima-title {
+    font-size: clamp(40px, 12vw, 60px);
+    margin-bottom: 24px;
+  }
+
+  .heading-hero,
+  .heading-massive {
+    font-size: clamp(36px, 10vw, 56px);
+    line-height: 1.1;
+  }
+
+  .heading-large {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  /* Тексты */
+  .text-large {
+    font-size: clamp(18px, 4.5vw, 24px);
+  }
+
+  .text-hero {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+
+  .text-medium {
+    font-size: clamp(16px, 3.5vw, 20px);
+  }
+
+  /* Статистика */
+  .stat-number {
+    font-size: clamp(56px, 18vw, 80px);
+    margin-bottom: 16px;
+  }
+
+  .stat-number-big {
+    font-size: clamp(48px, 15vw, 72px);
+  }
+
+  .stat-label {
+    font-size: 14px;
+  }
+
+  .stat-sublabel {
+    font-size: 12px;
+  }
+
+  /* Карточки */
+  .glass-card {
+    padding: 24px 20px;
+  }
+
+  .feature-card {
+    padding: 32px 24px;
+  }
+
+  .content-block {
+    padding: 32px 24px;
+  }
+
+  /* Timeline */
+  .timeline-vertical {
+    padding-left: 40px;
+  }
+
+  .timeline-vertical::before {
+    left: 12px;
+    width: 2px;
+  }
+
+  .timeline-dot {
+    left: -32px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline-dot.glow {
+    width: 16px;
+    height: 16px;
+    left: -34px;
+  }
+
+  .timeline-content {
+    padding: 24px;
+  }
+
+  .timeline-title {
+    font-size: clamp(18px, 4.5vw, 24px);
+  }
+
+  .timeline-subtitle {
+    font-size: 14px;
+  }
+
+  /* Bento Grid */
+  .bento-item {
+    padding: 24px;
+    min-height: 120px;
+  }
+
+  .bento-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .bento-text {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+
+  /* Access Cards */
+  .access-card {
+    padding: 24px 32px;
+    font-size: clamp(18px, 4.5vw, 24px);
+  }
+
+  .access-card.large-card {
+    padding: 32px 40px;
+    font-size: clamp(20px, 5vw, 28px);
+  }
+
+  /* Иконки */
+  .icon-circle {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 24px;
+  }
+
+  .icon-circle svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Пиллы */
+  .pill-item {
+    padding: 16px 24px;
+    font-size: clamp(16px, 4vw, 20px);
+  }
+
+  .pill-item.large {
+    padding: 18px 28px;
+    font-size: clamp(18px, 4.5vw, 22px);
+  }
+
+  /* Label Pill */
+  .label-pill {
+    padding: 10px 24px;
+    font-size: 12px;
+  }
+
+  /* VIP List */
+  .vip-item {
+    font-size: clamp(16px, 4vw, 20px);
+    padding: 12px 0;
+  }
+
+  .vip-role {
+    font-size: 12px;
+  }
+
+  /* Highlight Box */
+  .highlight-box {
+    padding: 32px 24px;
+  }
+
+  /* QR Code */
+  .qr-code {
+    width: 180px;
+    height: 180px;
+    margin-top: 40px;
+  }
+
+  /* Footnote */
+  .footnote {
+    font-size: 12px;
+    margin-top: 32px;
+  }
+
+  /* Context Label */
+  .context-label {
+    font-size: 12px;
+  }
+
+  /* Card Title & Duration */
+  .card-title {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+
+  .card-duration {
+    font-size: clamp(14px, 3.5vw, 18px);
+  }
+
+  /* Feature List */
+  .feature-list {
+    font-size: clamp(14px, 3.5vw, 18px);
+  }
+
+  .elegant-list {
+    font-size: clamp(14px, 3.5vw, 18px);
+  }
+
+  /* Block Title */
+  .block-title {
+    font-size: clamp(18px, 4.5vw, 24px);
+  }
+}
+
+.qr-code {
+  margin-top: 40px;
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 40px rgba(0, 245, 255, 0.25);
+}
+/* ==================== NAV BUTTONS ==================== */
+.nav-buttons {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  gap: 16px;
+  z-index: 5;
+}
+
+.nav-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 245, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: #00f5ff;
+  font-size: 32px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: rgba(0, 245, 255, 0.1);
+  transform: scale(1.15);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
+}
+
+.nav-btn.prev {
+  border-color: rgba(255, 0, 229, 0.4);
+  color: #ff00e5;
+}
+
+.nav-btn.prev:hover {
+  background: rgba(255, 0, 229, 0.1);
+  box-shadow: 0 0 30px rgba(255, 0, 229, 0.4);
+}
+/* Горизонтальные карточки для 5 слоёв */
+.cards-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.system-card {
+  padding: 22px 28px;
+  border-radius: 16px;
+  min-width: 220px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.system-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ==================== LAYERS CARDS (Slide 11B) ==================== */
+.layers-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.layer-card {
+  padding: 36px 40px;
+  border-radius: 16px;
+  min-width: 200px;
+  flex: 1;
+  max-width: 260px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layer-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.layer-card-title {
+  font-size: clamp(18px, 2.3vw, 24px);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==================== JOURNEY FLOW (Slide 15 - змейка) ==================== */
+.journey-flow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.journey-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex: 0 0 auto;
+}
+
+.journey-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 245, 255, 0.15);
+  border: 2px solid rgba(0, 245, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(20px, 2.8vw, 28px);
+  font-weight: 700;
+  color: #00f5ff;
+}
+
+.journey-number.glow {
+  background: rgba(0, 245, 255, 0.3);
+  border-color: #00f5ff;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+.journey-card {
+  padding: 28px 24px;
+  border-radius: 16px;
+  min-width: 220px;
+  max-width: 240px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.journey-card.featured {
+  background: rgba(0, 245, 255, 0.08);
+  border-color: rgba(0, 245, 255, 0.4);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
+}
+
+.journey-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.journey-title {
+  font-size: clamp(17px, 2.3vw, 22px);
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.journey-subtitle {
+  font-size: clamp(13px, 1.7vw, 16px);
+  font-weight: 300;
+  color: rgba(0, 245, 255, 0.7);
+  line-height: 1.3;
+}
+
+.journey-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.journey-detail-item {
+  font-size: clamp(10px, 1.3vw, 12px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.journey-arrow {
+  font-size: clamp(24px, 3.5vw, 36px);
+  color: rgba(0, 245, 255, 0.6);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  margin-top: 52px;
+}
+
+.subpoints {
+  margin-top: 12px;
+  margin-left: 12px;
+  font-size: 16px;
+  line-height: 1.35;
+  opacity: 0.9;
+}
+.subpoints li {
+  margin-bottom: 6px;
+}
+.two-col {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.info-box {
+  padding: 32px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info-box p {
+  text-align: left;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.info-number {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.faces-row {
+  display: flex;
+  gap: 14px;
+}
+
+.face {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+/* Разметка сетки */
+.trackers-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+/* Левая колонка с двумя карточками */
+.trackers-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  max-width: 650px;
+}
+
+/* Правая колонка — картинка */
+.trackers-image-block {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trackers-image {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+}
+.cta-offer {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.95;
+}
